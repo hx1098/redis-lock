@@ -5,10 +5,10 @@
 
 
 	
-	<groupId>com.online.taxi.order</groupId>
-	<artifactId>distributed-lock</artifactId>
+	<groupId>com.hx</groupId>
+	<artifactId>redis-lock</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>distributed-lock-demo</name>
+	<name>redis-lock-demo</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
