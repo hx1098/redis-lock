@@ -13,11 +13,11 @@
 ## 1.无锁状态
 这个肯定是会出问题id, 但是我还是要演示一下, 实现类**Grab_01_Nolocks.calss**, 同时使用Jmeter进行设置10个司机进行抢单,
 
-![image-20210812225306134](redis-lock/img/image-20210812225147015.png)
+![image-20210812225306134](https://github.com/hx1098/redis-lock/blob/main/img/image-20210812225147015.png)
 
-![image-20210812225330681](img\image-20210812225330681.png)
+![image-20210812225330681](https://github.com/hx1098/redis-lock/blob/main/img/image-20210812225306134.png)
 
-![image-20210812225147015](img\image-20210812225147015.png)
+![image-20210812225147015](https://github.com/hx1098/redis-lock/blob/main/img/image-20210812225330681.png)
 
 
 
