@@ -1,4 +1,22 @@
-# 应用名称
-spring.application.name=drivers-service
+
+#服务端口
+#server:
+#  port: 8004
+
+#应用名称及验证账号
+spring:
+  application:
+    name: drivers-service
 
 
+#注册中心
+eureka:
+
+  client:
+    enabled: true
+    #设置服务注册中心的URL
+    service-url:
+      defaultZone: http://eureka-7900:7900/eureka/
+
+server:
+  port: 8003

@@ -1,6 +1,7 @@
 package com.hx.orderservice.dao;
 
 import com.hx.orderservice.entity.TblOrder;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @author makejava
  * @since 2021-08-12 17:42:11
  */
+@Mapper
 public interface TblOrderDao {
 
     /**

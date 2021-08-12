@@ -23,7 +23,7 @@ spring:
     #数据库连接用户名
     username: root
     #数据库连接密码
-    password: root
+    password: 123456
     #进行数据库连接池的配置
     dbcp2:
       #初始化提供的连接数
@@ -48,7 +48,6 @@ sentinel:
 
 #注册中心
 eureka:
-
   client:
     enabled: true
     #设置服务注册中心的URL
