@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hx.orderservice.dao.TblOrderDao">
+
+    <resultMap type="com.hx.orderservice.entity.TblOrder" id="TblOrderMap">
+        <result property="orderId" column="order_id" jdbcType="INTEGER"/>
+        <result property="orderStatus" column="order_status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TblOrderMap">
+        select
+          order_id, order_status
+        from tbl_order
+        where order_id = #{orderId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TblOrderMap">
+        select
+          order_id, order_status
+        from tbl_order
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="TblOrderMap">
+        select
+        order_id, order_status
+        from tbl_order
+        <where>
+            <if test="orderId != null">
+                and order_id = #{orderId}
+            </if>
+            <if test="orderStatus != null">
+                and order_status = #{orderStatus}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="orderId" useGeneratedKeys="true">
+        insert into tbl_order(order_status)
+        values (#{orderStatus})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="orderId" useGeneratedKeys="true">
+        insert into tbl_order(order_status)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.orderStatus})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="orderId" useGeneratedKeys="true">
+        insert into tbl_order(order_status)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.orderStatus})
+        </foreach>
+        on duplicate key update
+        order_status = values(order_status)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update tbl_order
+        <set>
+            <if test="orderStatus != null">
+                order_status = #{orderStatus},
+            </if>
+        </set>
+        where order_id = #{orderId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from tbl_order where order_id = #{orderId}
+    </delete>
+
+</mapper>
+

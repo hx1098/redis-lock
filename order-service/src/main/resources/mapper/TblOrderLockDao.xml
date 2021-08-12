@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hx.orderservice.dao.TblOrderLockDao">
+
+    <resultMap type="com.hx.orderservice.entity.TblOrderLock" id="TblOrderLockMap">
+        <result property="orderId" column="order_id" jdbcType="INTEGER"/>
+        <result property="driverId" column="driver_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TblOrderLockMap">
+        select
+          order_id, driver_id
+        from tbl_order_lock
+        where order_id = #{orderId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TblOrderLockMap">
+        select
+          order_id, driver_id
+        from tbl_order_lock
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="TblOrderLockMap">
+        select
+        order_id, driver_id
+        from tbl_order_lock
+        <where>
+            <if test="orderId != null">
+                and order_id = #{orderId}
+            </if>
+            <if test="driverId != null">
+                and driver_id = #{driverId}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="orderId" useGeneratedKeys="true">
+        insert into tbl_order_lock(driver_id)
+        values (#{driverId})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="orderId" useGeneratedKeys="true">
+        insert into tbl_order_lock(driver_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.driverId})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="orderId" useGeneratedKeys="true">
+        insert into tbl_order_lock(driver_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.driverId})
+        </foreach>
+        on duplicate key update
+        driver_id = values(driver_id)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update tbl_order_lock
+        <set>
+            <if test="driverId != null">
+                driver_id = #{driverId},
+            </if>
+        </set>
+        where order_id = #{orderId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from tbl_order_lock where order_id = #{orderId}
+    </delete>
+
+</mapper>
+
