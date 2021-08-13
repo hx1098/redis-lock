@@ -13,15 +13,16 @@
 ## 1.无锁状态
 这个肯定是会出问题id, 但是我还是要演示一下, 实现类**Grab_01_Nolocks.calss**, 同时使用Jmeter进行设置10个司机进行抢单,
 
-![image-20210812225306134](https://github.com/hx1098/redis-lock/blob/main/img/image-20210812225147015.png)
+![image-20210812225306134](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/image-20210812225147015.png?raw=true)
 
-![image-20210812225330681](https://github.com/hx1098/redis-lock/blob/main/img/image-20210812225306134.png)
+![image-20210812225330681](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/image-20210812225306134.png)
 
-![image-20210812225147015](https://github.com/hx1098/redis-lock/blob/main/img/image-20210812225330681.png)
+![image-20210812225147015](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/image-20210812225330681.png)
 
 
 
 可以看到这10个司机都抢单成功了, 那这不是乱套了吗? 到底该谁去接乘客哪? 显然不可能吧乘客分成10分的, 大家都是成年人, 而且都是法制社会, 也不可能为了一个乘客大打出手, 显然这是程序的锅.
+
 
 
 
