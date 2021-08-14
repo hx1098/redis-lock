@@ -17,7 +17,9 @@ import org.springframework.stereotype.Service;
  * @description  jvm 锁实现
  * @editUser hx
  * @editTime 2021/8/14 8:48
- * @editDescription
+ * @editDescription:
+ * 1. 单个实例下的抢单是只有一个是成功的, 符合逻辑
+ * 2. 但是在多个实例下的抢单, 是不会成功的, 因为锁是两个, 你无法进行控制
  */
 @Slf4j
 @Service("grabJvmLockService")

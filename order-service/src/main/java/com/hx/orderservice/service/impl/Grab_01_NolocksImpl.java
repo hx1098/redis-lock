@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
  * @description 无锁状态
  * @editUser hx
  * @editTime 2021/8/12 20:59
- * @editDescription
+ * @editDescription:
+ *  无锁状态下的抢单必然都是成功的, 但是不符合滴滴的逻辑
  */
 @Service("grabNoLockService")
 public class Grab_01_NolocksImpl implements GrabService {

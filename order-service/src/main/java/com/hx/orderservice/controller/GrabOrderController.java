@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class GrabOrderController {
 
     @Autowired
+    //无锁状态
     //@Qualifier("grabNoLockService")
+    //jvm锁
     @Qualifier("grabJvmLockService")
     private GrabService grabService;
 
