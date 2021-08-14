@@ -13,7 +13,7 @@ import java.util.List;
  * @since 2021-08-12 17:42:15
  */
 @Mapper
-public interface TblOrderLockDao {
+public interface TblOrderLockDao extends tk.mybatis.mapper.common.Mapper<TblOrderLock> {
 
     /**
      * 通过ID查询单条数据
@@ -47,7 +47,7 @@ public interface TblOrderLockDao {
      * @param tblOrderLock 实例对象
      * @return 影响行数
      */
-    int insert(TblOrderLock tblOrderLock);
+    //int insert(TblOrderLock tblOrderLock);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）

@@ -22,8 +22,11 @@ public class GrabOrderController {
     //无锁状态
     //@Qualifier("grabNoLockService")
     //jvm锁
-    @Qualifier("grabJvmLockService")
+    //@Qualifier("grabJvmLockService")
+    //mysql事件表锁
+    @Qualifier("grabMysqlLockService")
     private GrabService grabService;
+
 
 
     @GetMapping("/do/{orderId}")

@@ -39,10 +39,10 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="orderId" useGeneratedKeys="true">
+   <!-- <insert id="insert" keyProperty="orderId" useGeneratedKeys="true">
         insert into tbl_order_lock(driver_id)
         values (#{driverId})
-    </insert>
+    </insert>-->
 
     <insert id="insertBatch" keyProperty="orderId" useGeneratedKeys="true">
         insert into tbl_order_lock(driver_id)
