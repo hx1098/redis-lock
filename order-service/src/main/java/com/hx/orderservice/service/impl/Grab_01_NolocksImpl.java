@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @editDescription
  */
 @Service("grabNoLockService")
-public class Grab_01_Nolocks implements GrabService {
+public class Grab_01_NolocksImpl implements GrabService {
 
     @Autowired
     TblOrderService tblOrderService;
