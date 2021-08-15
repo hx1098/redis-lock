@@ -58,3 +58,8 @@
 
 
 
+![image-20210815093435615](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/20210815093435.png)
+
+
+
+![image-20210815093453265](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/20210815093453.png)

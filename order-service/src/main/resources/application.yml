@@ -11,8 +11,8 @@ spring:
     host: 127.0.0.1
     port: 6379
     timeout: 2000
-    password:
     #数据库连接配置
+    password:
   datasource:
     #配置当前使用的数据源的操作类型
     type: com.alibaba.druid.pool.DruidDataSource
