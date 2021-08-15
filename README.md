@@ -32,17 +32,17 @@
 
 第一种单个实例的:
 
-![img](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img20210814092018.png)
+![image-20210815095103758](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/20210815095103.png)
 
 
 
 第二种: 8004, 8005的实例
 
-![image-20210814094416146](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img20210814094436.png)
+![image-20210815095125821](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/20210815095125.png)
 
 
 
-![image-20210814094436714](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img20210814094436.png)
+![image-20210815095143404](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/20210815095143.png)
 
 综上所述: 如果是用的是单个节点是完全没有问题的, 但是第二种如果是多个节点的, 就会在使用上有问题了, 两台服务器都有有一个抢单成功的, 这就产生脏数据了, 而且也不符合真是的业务场景, jvm锁仅适用于那些单实例的节点, 这就引入了下面所要说的分布式锁
 
