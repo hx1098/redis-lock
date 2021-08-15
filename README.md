@@ -56,10 +56,15 @@
 
 ## 4.redis单机的锁
 
+redis锁实现起来比较简单, 基本就一个RedissonClient lock(), unlock()完事了, 但是需要注意的点还是有的
 
+- unlock时候一定要在**finally**中, 否则可能无法进行解锁
+- 在使用redis命令的时候,生产环境中一定要加上一个超时时间, 防止队友重启redis时候,无法释放锁, 同时也防止redis日渐肥胖,导致资源耗尽
+- 加超时时间会有加不上的情况, 这个时候要看自己的命令是按照几行代码执行的, 一般来说这种情况很少会遇到, 但你既然用到了分布式系统, 想必你的系统也已经有了一定的用户量, 所以, 一定在执行的时候, 可以变成一行的命令一定要变成一行(**Grab_04_RedisLockImpl**.java这里有说明)
 
 ![image-20210815093435615](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/20210815093435.png)
 
 
 
 ![image-20210815093453265](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/20210815093453.png)
+
