@@ -46,27 +46,27 @@ public class RedisConfig {
 //    }
     //以上为redisson 哨兵锁
 
-    /*//region以下为红锁
+    //region以下为红锁
     @Bean(name = "redissonRed1")
     @Primary
     public RedissonClient redissonRed1(){
         Config config = new Config();
-        config.useSingleServer().setAddress("127.0.0.1:6379").setDatabase(0);
+        config.useSingleServer().setAddress("redis://localhost:6379").setDatabase(0);
         return Redisson.create(config);
     }
     @Bean(name = "redissonRed2")
     public RedissonClient redissonRed2(){
         Config config = new Config();
-        config.useSingleServer().setAddress("127.0.0.1:6380").setDatabase(0);
+        config.useSingleServer().setAddress("redis://localhost:6380").setDatabase(0);
         return Redisson.create(config);
     }
     @Bean(name = "redissonRed3")
     public RedissonClient redissonRed3(){
         Config config = new Config();
-        config.useSingleServer().setAddress("127.0.0.1:6381").setDatabase(0);
+        config.useSingleServer().setAddress("redis://localhost:6381").setDatabase(0);
         return Redisson.create(config);
     }
-    //endregion以上为红锁*/
+    //endregion以上为红锁
 
 
     // 单个redis
@@ -84,13 +84,13 @@ public class RedisConfig {
      *
      * @return
      */
-    @Bean
+    /*@Bean
     public RedissonClient redissonClient() {
     	Config config = new Config();
     	config.useSingleServer().setAddress("redis://localhost:6379").setDatabase(0);
 
     	return Redisson.create(config);
-    }
+    }*/
    /* @Bean
     public Redisson redisson() {
         Config config = new Config();

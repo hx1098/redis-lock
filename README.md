@@ -68,3 +68,58 @@ redis锁实现起来比较简单, 基本就一个RedissonClient lock(), unlock()
 
 ![image-20210815093453265](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/20210815093453.png)
 
+
+
+
+
+## 4.redis-RedLock
+
+准备工作
+
+```bash
+#分别启动三个redis, 6379, 6380, 6381
+.\redis-server.exe .\redis.windows.conf
+.\redis-server.exe .\redis.windows6380.conf
+.\redis-server.exe .\redis.windows6381.conf
+```
+
+关键代码:
+
+```java
+        String lockKey = (RedisKeyConstant.GRAB_LOCK_ORDER_KEY_PRE + orderId).intern();
+
+        //红锁 redisson
+        RLock   rLock1 = redissonRed1.getLock(lockKey);
+        RLock   rLock2 = redissonRed2.getLock(lockKey);
+        RLock   rLock3 = redissonRed3.getLock(lockKey);
+        RedissonRedLock rLock = new RedissonRedLock(rLock1, rLock2, rLock3);
+        try {
+            rLock.lock();
+           /* try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }*/
+
+            boolean b = tblOrderService.grab(orderId, driverId);
+            if(b) {
+                System.out.println("司机:"+driverId+" 抢单成功");
+            }else {
+                System.out.println("司机:"+driverId+" 抢单失败");
+            }
+
+        } finally {
+            rLock.unlock();
+        }
+
+        return "";
+```
+
+![image-20210815135838738](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/20210815135838.png)
+
+![image-20210815135900243](https://cdn.jsdelivr.net/gh/hx1098/redis-lock@master/img/20210815135900.png)
+
+
+
+
+

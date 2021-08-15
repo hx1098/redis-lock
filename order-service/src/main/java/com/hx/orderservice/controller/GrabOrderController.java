@@ -26,8 +26,11 @@ public class GrabOrderController {
     //mysql事件表锁
     //@Qualifier("grabMysqlLockService")
     //单个redisson
-    @Qualifier("grabRedisRedissonService")
+    //@Qualifier("grabRedisRedissonService")
+    //red锁
+    @Qualifier("grabRedisRedissonRedLockLockService")
     private GrabService grabService;
+
 
 
     @GetMapping("/do/{orderId}")
