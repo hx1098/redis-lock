@@ -28,7 +28,8 @@ public class GrabOrderController {
     //单个redisson
     //@Qualifier("grabRedisRedissonService")
     //red锁
-    @Qualifier("grabRedisRedissonRedLockLockService")
+    //@Qualifier("grabRedisRedissonRedLockLockService")
+    @Qualifier("noIntrusionImpLockService")
     private GrabService grabService;
 
 
